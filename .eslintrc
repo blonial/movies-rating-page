@@ -1,0 +1,41 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings"
+  ],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "default-case": "error",
+    "eqeqeq": ["error", "smart"],
+    "no-mixed-spaces-and-tabs": "off",
+    "no-var": "error",
+    "quotes": ["error", "single"],
+    "import/named": "warn",
+    "react/no-unused-prop-types": "error"
+  },
+  "globals": {
+    "window": true,
+    "document": true,
+    "setInterval": true,
+    "clearInterval": true,
+    "Promise": true,
+    "process": true,
+    "setTimeout": true,
+    "clearTimeout": true,
+    "module": true,
+    "require": true,
+    "__dirname": true,
+    "test": true,
+    "expect": true
+  }
+}
