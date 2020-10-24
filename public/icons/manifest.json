@@ -1,6 +1,6 @@
 {
-  "short_name": "Videos rating",
-  "name": "Videos rating page",
+  "short_name": "Movies rating",
+  "name": "Movies rating page",
   "icons": [
     {
       "src": "./android-icon-36x36.png",
