@@ -1,6 +1,12 @@
-import { createStore } from 'redux';
-import { noop } from 'lodash';
+import { createStore as createReduxStore } from 'redux';
+import { persistStore } from 'redux-persist';
 
-const store = createStore(noop);
+import combinedReducers from './combinedReducers';
 
-export default store;
+function createStore() {
+  const store = createReduxStore(combinedReducers);
+  const persistor = persistStore(store);
+  return { store, persistor };
+}
+
+export default createStore;
