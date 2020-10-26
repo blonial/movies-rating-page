@@ -1,10 +1,22 @@
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-const initialState = { token: null };
+import { userActions } from '../actions/user.actions';
 
-function userReducer(state = initialState) {
-  return state;
+const initialState = { token: null, nick: null };
+
+function userReducer(state = initialState, action = {}) {
+  const { type, payload } = action;
+  switch (type) {
+    case userActions.setUserToken:
+      return { ...state, token: payload };
+    case userActions.setUserNick:
+      return { ...state, nick: payload };
+    case userActions.resetUser:
+      return { ...initialState };
+    default:
+      return state;
+  }
 }
 
 const persistConfig = {

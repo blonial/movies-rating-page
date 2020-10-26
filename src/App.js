@@ -1,19 +1,23 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
+import { useSelector } from 'react-redux';
 
-import createStore from './store';
-
-const { store, persistor } = createStore();
+import { getViewType } from './selectors/viewType.selectors';
+import viewType from './enums/viewType.enum';
+import { FinishView, MoviesView, WelcomeView } from './views';
 
 function App() {
-  return (
-    <Provider store={store}>
-      <PersistGate loading={<div>loading</div>} persistor={persistor}>
-        <div>test</div>
-      </PersistGate>
-    </Provider>
-  );
+  const selectedViewType = useSelector(getViewType);
+
+  switch (selectedViewType) {
+    case viewType.welcomeView:
+      return <WelcomeView />;
+    case viewType.moviesView:
+      return <MoviesView />;
+    case viewType.finishView:
+      return <FinishView />;
+    default:
+      return null;
+  }
 }
 
 export default App;
