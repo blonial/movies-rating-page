@@ -5,6 +5,9 @@ import thunk from 'redux-thunk';
 import getComposeEnhancers from './composeEnhancers';
 import combinedReducers from './combinedReducers';
 
+import ReduxPersistCrosstabSync from '../middlewares/ReduxPersistCrosstabSync';
+import crosstabConfig from './crosstabConfig';
+
 const composeEnhancers = getComposeEnhancers();
 
 function createStore() {
@@ -13,6 +16,7 @@ function createStore() {
     composeEnhancers(applyMiddleware(thunk))
   );
   const persistor = persistStore(store);
+  ReduxPersistCrosstabSync(store, crosstabConfig);
   return { store, persistor };
 }
 

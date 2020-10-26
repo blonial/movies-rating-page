@@ -14,7 +14,7 @@ function getComposeEnhancers() {
       decode(window.location.search.substr(1)),
       'enableReduxDevTools'
     );
-    if (NODE_ENV === nodeEnv.production || enableReduxDevTools === 'true') {
+    if (NODE_ENV !== nodeEnv.production || enableReduxDevTools === 'true') {
       return window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
     }
   }
