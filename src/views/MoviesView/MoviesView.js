@@ -4,8 +4,11 @@ import { useDispatch } from 'react-redux';
 import viewType from '../../enums/viewType.enum';
 import { setViewType } from '../../actions/viewType.actions';
 
+import { useLanguage } from '../../hooks';
+
 function MoviesView() {
   const dispatch = useDispatch();
+  const language = useLanguage('moviesView');
 
   const changeViewToFinishView = useCallback(() => {
     setViewType(viewType.finishView)(dispatch);
@@ -13,10 +16,8 @@ function MoviesView() {
 
   return (
     <div>
-      MoviesView
-      <button onClick={changeViewToFinishView}>
-        Change view to finish view
-      </button>
+      {language.title}
+      <button onClick={changeViewToFinishView}>{language.button}</button>
     </div>
   );
 }

@@ -5,8 +5,11 @@ import { resetViewType } from '../../actions/viewType.actions';
 import { resetRatingMovie } from '../../actions/ratingMovie.actions';
 import { resetUser } from '../../actions/user.actions';
 
+import { useLanguage } from '../../hooks';
+
 function FinishView() {
   const dispatch = useDispatch();
+  const language = useLanguage('finishView');
 
   const reset = useCallback(() => {
     resetViewType()(dispatch);
@@ -16,8 +19,8 @@ function FinishView() {
 
   return (
     <div>
-      FinishView
-      <button onClick={reset}>Reset</button>
+      {language.title}
+      <button onClick={reset}>{language.button}</button>
     </div>
   );
 }
