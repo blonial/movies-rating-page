@@ -1,0 +1,57 @@
+.welcome-view {
+  .select-language {
+    .language {
+      cursor: pointer;
+      position: relative;
+
+      .flag {
+        border: 3px solid rgb(0, 0, 0);
+      }
+    }
+
+    .language.active {
+      .flag {
+        border: 3px solid rgb(255, 255, 0);
+      }
+    }
+
+    .language:hover {
+      .language-name {
+        font-weight: bold;
+      }
+    }
+  }
+
+  .select-theme {
+    .theme {
+      cursor: pointer;
+      position: relative;
+
+      .theme-img {
+        min-height: 100px;
+        min-width: 205px;
+        border: 3px solid rgb(0, 0, 0);
+      }
+
+      .theme-img.dark {
+        background: rgb(54, 54, 54);
+      }
+
+      .theme-img.white {
+        background: rgb(255, 255, 255);
+      }
+    }
+
+    .theme.active {
+      .theme-img {
+        border: 3px solid rgb(255, 255, 0);
+      }
+    }
+
+    .theme:hover {
+      .theme-name {
+        font-weight: bold;
+      }
+    }
+  }
+}

@@ -1,24 +1,27 @@
-import React, { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
 
-import viewType from '../../enums/viewType.enum';
-import { setViewType } from '../../actions/viewType.actions';
+import { SelectLanguage, SelectTheme, EnterNick, UserInfo } from './components';
 
-import { useLanguage } from '../../hooks';
+import './style.scss';
 
 function WelcomeView() {
-  const dispatch = useDispatch();
-  const language = useLanguage('welcomeView');
-
-  const changeViewToMoviesView = useCallback(() => {
-    setViewType(viewType.moviesView)(dispatch);
-  }, [dispatch]);
-
   return (
-    <div>
-      {language.title}
-      <button onClick={changeViewToMoviesView}>{language.button}</button>
-    </div>
+    <section className='welcome-view container'>
+      <div className='row'>
+        <div className='col-sm-12 col-lg-6 d-flex justify-content-center'>
+          <SelectLanguage />
+        </div>
+        <div className='col-sm-12 col-lg-6 d-flex justify-content-center'>
+          <SelectTheme />
+        </div>
+      </div>
+      <div className='row'>
+        <div className='col-12 d-flex justify-content-center'>
+          <EnterNick />
+        </div>
+      </div>
+      <UserInfo />
+    </section>
   );
 }
 

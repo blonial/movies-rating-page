@@ -6,21 +6,25 @@ import { PersistGate } from 'redux-persist/integration/react';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import LanguageProvider from './hocs/LanguageProvider';
+import ThemeProvider from './hocs/ThemeProvider';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle';
 
 import createStore from './store';
 
 const { store, persistor } = createStore();
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <LanguageProvider>
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+      <LanguageProvider>
+        <ThemeProvider>
           <App />
-        </LanguageProvider>
-      </PersistGate>
-    </Provider>
-  </React.StrictMode>,
+        </ThemeProvider>
+      </LanguageProvider>
+    </PersistGate>
+  </Provider>,
   document.getElementById('root')
 );
 

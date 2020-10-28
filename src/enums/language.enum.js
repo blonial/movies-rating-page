@@ -1,6 +1,6 @@
 const language = {
   pl: 'pl',
-  en: 'en-gb',
+  en: 'en',
 };
 
 export default language;
