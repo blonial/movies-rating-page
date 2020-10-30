@@ -1,24 +1,16 @@
-import React, { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
 
-import viewType from '../../enums/viewType.enum';
-import { setViewType } from '../../actions/viewType.actions';
+import { MovieDetails, Rating, Navigation } from './components';
 
-import { useLanguage } from '../../hooks';
+import './style.scss';
 
 function MoviesView() {
-  const dispatch = useDispatch();
-  const language = useLanguage('moviesView');
-
-  const changeViewToFinishView = useCallback(() => {
-    setViewType(viewType.finishView)(dispatch);
-  }, [dispatch]);
-
   return (
-    <div>
-      {language.title}
-      <button onClick={changeViewToFinishView}>{language.button}</button>
-    </div>
+    <section className='movies-view container'>
+      <MovieDetails />
+      <Rating />
+      <Navigation />
+    </section>
   );
 }
 

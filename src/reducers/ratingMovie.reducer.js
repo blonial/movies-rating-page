@@ -8,8 +8,8 @@ const initialState = { id: 1 };
 function ratingMovieReducer(state = initialState, action = {}) {
   const { type, payload } = action;
   switch (type) {
-    case ratingMovieActions.setRatingMovie:
-      return { ...state, viewType: payload };
+    case ratingMovieActions.setRatingMovieId:
+      return { ...state, id: payload };
     case ratingMovieActions.resetRatingMoview:
       return { ...initialState };
     default:

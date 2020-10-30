@@ -1,30 +1,42 @@
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { bool } from 'prop-types';
+import { bool, func } from 'prop-types';
 
 import { useLanguage } from '../../../../hooks';
 import { CheckboxField, InputField } from '../../../../components/forms';
 import { setViewType } from '../../../../actions/viewType.actions';
+import {
+  setUserNick,
+  setUserConfirmationMode,
+} from '../../../../actions/user.actions';
 import viewType from '../../../../enums/viewType.enum';
 
-function EnterNick({ submitting }) {
+function EnterNick({ submitting, handleSubmit }) {
   const language = useLanguage('welcomeView.enterNick');
   const dispatch = useDispatch();
 
-  const handleSubmit = useCallback(
-    async (/*values*/) => {
-      // TODO: API request to get token
-      setViewType(viewType.moviesView)(dispatch);
-    },
-    [dispatch]
+  const onSubmit = useCallback(
+    (e) =>
+      handleSubmit((values) => {
+        const submit = () => {
+          // TODO: API request to get token
+          const { nick, confirmationMode = false } = values;
+          setViewType(viewType.moviesView)(dispatch);
+          setUserNick(nick)(dispatch);
+          setUserConfirmationMode(confirmationMode)(dispatch);
+        };
+
+        return submit();
+      })(e),
+    [dispatch, handleSubmit]
   );
 
   return (
     <div className='enter-nick row'>
       <form
         className='enter-nick-form col-12 d-flex flex-column'
-        onSubmit={handleSubmit}
+        onSubmit={onSubmit}
       >
         <Field
           name='nick'
@@ -49,6 +61,7 @@ function EnterNick({ submitting }) {
 
 EnterNick.propTypes = {
   submitting: bool.isRequired,
+  handleSubmit: func.isRequired,
 };
 
 export default reduxForm({ form: 'userDetails' })(EnterNick);

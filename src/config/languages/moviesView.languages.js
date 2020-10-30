@@ -1,11 +1,21 @@
 const data = {
   pl: {
-    title: 'Widok filmów',
-    button: 'Przejdź do widoku końcowego',
+    movieDetails: {
+      fetchingError: 'Błąd podczas pobierania danych filmu.',
+    },
+    rating: {
+      confirmButton: 'Zatwierdź',
+      neverSeenThisMovie: 'Nie widziałem tego filmu',
+    },
   },
   en: {
-    title: 'Movies view',
-    button: 'Go to finish view',
+    movieDetails: {
+      fetchingError: 'Error during getting movie data.',
+    },
+    rating: {
+      confirmButton: 'Confirm',
+      neverSeenThisMovie: 'Never seen this movie',
+    },
   },
 };
 

@@ -1,0 +1,11 @@
+.navigate-back {
+  position: absolute;
+  left: 5px;
+  top: 50%;
+}
+
+@media (min-width: 1200px) {
+  .navigate-back {
+    left: 2rem;
+  }
+}
