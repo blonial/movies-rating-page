@@ -1,22 +1,29 @@
 import React, { useCallback, useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import $ from 'jquery';
 import ReactRating from 'react-rating';
 import Icon from 'react-icons-kit';
 import { star } from 'react-icons-kit/fa/star';
 import { starO } from 'react-icons-kit/fa/starO';
 
 import { useLanguage } from '../../../../hooks';
-import { getUserConfirmationMode } from '../../../../selectors/user.selectors';
+import {
+  getUserConfirmationMode,
+  getUserToken,
+} from '../../../../selectors/user.selectors';
 import { getRatingMovieId } from '../../../../selectors/ratingMovie.selectors';
-import { setRatingMovieId } from '../../../../actions/ratingMovie.actions';
-import { setViewType } from '../../../../actions/viewType.actions';
+import {
+  setRatingMovieId,
+  rateMovie,
+} from '../../../../actions/ratingMovie.actions';
 import key from '../../../../enums/key.enum';
-import viewType from '../../../../enums/viewType.enum';
 
 const FullSymbol = <Icon icon={star} size={36} />;
 const EmptySymbol = <Icon icon={starO} size={36} />;
 
 function Rating() {
+  const [fetching, setFetching] = useState(false);
+  const [error, setError] = useState(null);
   const [rating, setRating] = useState(0);
 
   const dispatch = useDispatch();
@@ -24,20 +31,37 @@ function Rating() {
   const language = useLanguage('moviesView.rating');
 
   const confirmationMode = useSelector(getUserConfirmationMode);
+  const token = useSelector(getUserToken);
   const ratingMovieId = useSelector(getRatingMovieId);
 
   const handleConfirm = useCallback(
-    (/*value*/) => {
-      // TODO: Api request to save rating, REMEMBER! value - 1
+    (value) => {
       const nextRatingMovie = ratingMovieId + 1;
-      if (nextRatingMovie > 200) {
-        // TODO: Show confirmation modal
-        setViewType(viewType.finishView)(dispatch);
-      } else {
-        setRatingMovieId(nextRatingMovie)(dispatch);
+
+      const rate = async () => {
+        try {
+          setFetching(true);
+          await rateMovie(ratingMovieId, value - 1, token);
+          setError(null);
+          if (nextRatingMovie > 200) {
+            $('#confirmationModal').modal('show');
+          } else {
+            setRatingMovieId(nextRatingMovie)(dispatch);
+          }
+        } catch (error) {
+          //eslint-disable-next-line
+          console.debug(error);
+          setError(language.ratingError);
+        } finally {
+          setFetching(false);
+        }
+      };
+
+      if (!fetching) {
+        rate();
       }
     },
-    [dispatch, ratingMovieId]
+    [dispatch, ratingMovieId, token, language, fetching]
   );
 
   const handleConfirmConfirmationMode = useCallback(() => {
@@ -128,6 +152,7 @@ function Rating() {
             {language.confirmButton}
           </button>
         )}
+        {error && <div className='text-danger'>{error}</div>}
       </div>
       <button onClick={handleNeverSeenThisMovie}>
         {language.neverSeenThisMovie}

@@ -1,6 +1,11 @@
 import React from 'react';
 
-import { MovieDetails, Rating, Navigation } from './components';
+import {
+  MovieDetails,
+  Rating,
+  Navigation,
+  ConfirmationModal,
+} from './components';
 
 import './style.scss';
 
@@ -10,6 +15,7 @@ function MoviesView() {
       <MovieDetails />
       <Rating />
       <Navigation />
+      <ConfirmationModal />
     </section>
   );
 }

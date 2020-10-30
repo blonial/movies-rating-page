@@ -8,7 +8,7 @@ function LoadingWrapper({ fetching, error, children }) {
   ) : (
     <>
       {children}
-      {!isNil(error) && <div className='text-error'>{error}</div>}
+      {!isNil(error) && <div className='text-danger'>{error}</div>}
     </>
   );
 }

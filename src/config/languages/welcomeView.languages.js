@@ -19,6 +19,8 @@ const data = {
       enterNick: 'Podaj nick:',
       confirmationMode: 'Tryb potwierdzania',
       submitButton: 'Zaczynajmy!',
+      fetchingError:
+        'Wystąpił błąd podczas tworzenia sesji! Spróbuj ponownie później.',
     },
     userInfo: {
       controllsDescription:
@@ -51,6 +53,7 @@ const data = {
       enterNick: 'Enter nick:',
       confirmationMode: 'Confirmation mode',
       submitButton: 'Let&rsquo;s start!',
+      fetchingError: 'Error during creating user session! Try again later!.',
     },
     userInfo: {
       controllsDescription:

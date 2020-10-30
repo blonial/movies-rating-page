@@ -1,3 +1,7 @@
+import Axios from 'axios';
+
+import { VOTE_API } from '../config/variables.config';
+
 export const userActions = {
   setUserToken: 'user/token/set',
   setUserNick: 'user/nick/set',
@@ -19,3 +23,19 @@ export const setUserConfirmationMode = (confimationMode) => (dispatch) =>
 
 export const resetUser = () => (dispatch) =>
   dispatch({ type: userActions.resetUser });
+
+export const createUserSession = (nick) =>
+  Axios.get(`${VOTE_API}/sessions`, {
+    method: 'POST',
+    data: {
+      nickname: nick,
+    },
+  });
+
+export const confirmUserRatings = (token) =>
+  Axios.get(`${VOTE_API}/confirmations`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
