@@ -12,9 +12,9 @@ import './style.scss';
 function MoviesView() {
   return (
     <section className='movies-view container'>
+      <Navigation />
       <MovieDetails />
       <Rating />
-      <Navigation />
       <ConfirmationModal />
     </section>
   );

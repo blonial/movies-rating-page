@@ -2,6 +2,8 @@ const data = {
   pl: {
     movieDetails: {
       fetchingError: 'Błąd podczas pobierania danych filmu.',
+      overview: 'Opis',
+      country: 'Kraje produkcji',
     },
     rating: {
       confirmButton: 'Zatwierdź',
@@ -17,10 +19,15 @@ const data = {
       confirmingError:
         'Wystąpił problem podczas zapisywania ocen! Spróbuj ponownie później.',
     },
+    navigation: {
+      back: 'Poprzedni film',
+    },
   },
   en: {
     movieDetails: {
+      overview: 'Overview',
       fetchingError: 'Error during getting movie data.',
+      country: 'Production countries',
     },
     rating: {
       confirmButton: 'Confirm',
@@ -33,6 +40,9 @@ const data = {
       save: 'Confirm',
       close: 'Cancel',
       confirmingError: 'Error during saving ratings! Try again later.',
+    },
+    navigation: {
+      back: 'Previous movie',
     },
   },
 };

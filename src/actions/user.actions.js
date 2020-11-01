@@ -13,7 +13,7 @@ export const setUserToken = (token) => (dispatch) =>
   dispatch({ type: userActions.setUserToken, payload: token });
 
 export const setUserNick = (nick) => (dispatch) =>
-  dispatch({ type: userActions.setUserToken, payload: nick });
+  dispatch({ type: userActions.setUserNick, payload: nick });
 
 export const setUserConfirmationMode = (confimationMode) => (dispatch) =>
   dispatch({
@@ -25,16 +25,12 @@ export const resetUser = () => (dispatch) =>
   dispatch({ type: userActions.resetUser });
 
 export const createUserSession = (nick) =>
-  Axios.get(`${VOTE_API}/sessions`, {
-    method: 'POST',
-    data: {
-      nickname: nick,
-    },
+  Axios.post(`${VOTE_API}/sessions`, {
+    nickname: nick,
   });
 
 export const confirmUserRatings = (token) =>
-  Axios.get(`${VOTE_API}/confirmations`, {
-    method: 'POST',
+  Axios.post(`${VOTE_API}/confirmations`, null, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

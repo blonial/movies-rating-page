@@ -5,8 +5,11 @@ import { arrowCircleLeft } from 'react-icons-kit/fa/arrowCircleLeft';
 
 import { getRatingMovieId } from '../../../../selectors/ratingMovie.selectors';
 import { setRatingMovieId } from '../../../../actions/ratingMovie.actions';
+import { useLanguage } from '../../../../hooks';
 
 function Navigation() {
+  const language = useLanguage('moviesView.navigation');
+
   const dispatch = useDispatch();
 
   const ratingMovieId = useSelector(getRatingMovieId);
@@ -16,9 +19,12 @@ function Navigation() {
   }, [dispatch, ratingMovieId]);
 
   return ratingMovieId === 1 ? null : (
-    <span className='navigate-back' onClick={handleClick}>
-      <Icon icon={arrowCircleLeft} size={56} />
-    </span>
+    <div>
+      <span className='navigate-back text-warning' onClick={handleClick}>
+        <Icon icon={arrowCircleLeft} size={24} /> {language.back}
+      </span>
+      <span className='ml-5'>{ratingMovieId} / 200</span>
+    </div>
   );
 }
 

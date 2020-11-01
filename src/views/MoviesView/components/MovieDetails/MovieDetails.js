@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { get, isNil } from 'lodash';
+import { get, isNil, isEmpty } from 'lodash';
+import Flag from 'react-world-flags';
 
 import { getLanguage } from '../../../../selectors/language.selectors';
 import { getRatingMovieId } from '../../../../selectors/ratingMovie.selectors';
@@ -49,12 +50,39 @@ function MovieDetails() {
 
   return (
     <div className='movie-details'>
-      <span>{ratingMovieId} / 200</span>
       <LoadingWrapper fetching={fetching} error={error}>
         {isNil(data) ? null : (
           <div className='details'>
-            <h1>{data.title}</h1>
-            <h4>{data.release_date}</h4>
+            <div className='d-flex my-3'>
+              <img
+                className='poster mr-5'
+                src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
+                alt={data.title}
+              />
+              <div>
+                <h1>{data.title}</h1>
+                <h4>{data.release_date.split('-').reverse().join('-')}</h4>
+                <span className='d-none d-md-block mt-3'>{data.tagline}</span>
+              </div>
+            </div>
+            <h5>{language.overview}</h5>
+            <span>{data.overview}</span>
+            <hr />
+            {!isEmpty(data.production_countries) && (
+              <>
+                <h5>{language.country}</h5>
+                <div className='d-flex'>
+                  {data.production_countries.map((country) => (
+                    <Flag
+                      key={country.iso_3166_1}
+                      height={32}
+                      code={country.iso_3166_1}
+                      className='mr-3'
+                    />
+                  ))}
+                </div>
+              </>
+            )}
           </div>
         )}
       </LoadingWrapper>

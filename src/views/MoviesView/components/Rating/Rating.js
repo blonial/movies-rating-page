@@ -148,13 +148,17 @@ function Rating() {
           <button
             onClick={handleConfirmConfirmationMode}
             disabled={rating === 0}
+            className='btn btn-primary ml-3'
           >
             {language.confirmButton}
           </button>
         )}
-        {error && <div className='text-danger'>{error}</div>}
       </div>
-      <button className='btn btn-primary' onClick={handleNeverSeenThisMovie}>
+      {error && <div className='text-danger text-center'>{error}</div>}
+      <button
+        className='btn btn-warning mt-2'
+        onClick={handleNeverSeenThisMovie}
+      >
         {language.neverSeenThisMovie}
       </button>
     </div>

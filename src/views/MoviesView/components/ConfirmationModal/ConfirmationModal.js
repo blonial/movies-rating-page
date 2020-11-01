@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import $ from 'jquery';
 
 import { useLanguage } from '../../../../hooks';
@@ -12,6 +12,8 @@ function ConfirmationModal() {
   const [fetching, setFetching] = useState(false);
   const [error, setError] = useState(null);
 
+  const dispatch = useDispatch();
+
   const language = useLanguage('moviesView.confirmationModal');
 
   const token = useSelector(getUserToken);
@@ -23,18 +25,17 @@ function ConfirmationModal() {
         await confirmUserRatings(token);
         setError(null);
         $('#confirmationModal').modal('hide');
-        setViewType(viewType.finishView);
+        setViewType(viewType.finishView)(dispatch);
       } catch (error) {
         //eslint-disable-next-line
         console.debug(error);
         setError(language.confirmingError);
-      } finally {
         setFetching(false);
       }
     };
 
     confirmRatings();
-  }, [language, token]);
+  }, [language, token, dispatch]);
 
   return (
     <div

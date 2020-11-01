@@ -36,13 +36,12 @@ function EnterNick({ submitting, handleSubmit }) {
               setUserNick(nick)(dispatch),
               setUserConfirmationMode(confirmationMode)(dispatch),
             ]);
-            setViewType(viewType.moviesView)(dispatch);
             setError(null);
+            setViewType(viewType.moviesView)(dispatch);
           } catch (error) {
             //eslint-disable-next-line
             console.debug(error);
             setError(language.fetchingError);
-          } finally {
             setFetching(false);
           }
         };
