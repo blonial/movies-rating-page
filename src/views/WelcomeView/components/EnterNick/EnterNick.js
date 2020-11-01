@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { bool, func } from 'prop-types';
-import { get } from 'lodash';
+import { get, isEmpty } from 'lodash';
 
 import { useLanguage } from '../../../../hooks';
 import { CheckboxField, InputField } from '../../../../components/forms';
@@ -21,6 +21,22 @@ function EnterNick({ submitting, handleSubmit }) {
 
   const language = useLanguage('welcomeView.enterNick');
   const dispatch = useDispatch();
+
+  const validateNick = useCallback(
+    (value) => {
+      if (isEmpty(value)) {
+        return language.nickEmpty;
+      }
+      if (value.length < 3) {
+        return language.nickLengthMin;
+      }
+      if (value.length > 64) {
+        return language.nickLengthMax;
+      }
+      return undefined;
+    },
+    [language]
+  );
 
   const onSubmit = useCallback(
     (e) =>
@@ -62,6 +78,7 @@ function EnterNick({ submitting, handleSubmit }) {
           component={InputField}
           placeholder='Nick'
           label={language.enterNick}
+          validate={validateNick}
         />
         <Field
           name='confirmationMode'

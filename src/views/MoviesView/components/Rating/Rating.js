@@ -134,7 +134,7 @@ function Rating() {
   ]);
 
   return (
-    <div className='rating d-flex flex-column justify-content-center'>
+    <div className='rating d-flex flex-column justify-content-center my-3'>
       <div className='d-flex justify-content-center'>
         <ReactRating
           fullSymbol={FullSymbol}

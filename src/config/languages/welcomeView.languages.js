@@ -21,6 +21,9 @@ const data = {
       submitButton: 'Zaczynajmy!',
       fetchingError:
         'Wystąpił błąd podczas tworzenia sesji! Spróbuj ponownie później.',
+      nickEmpty: 'Podaj nick.',
+      nickLengthMin: 'Nick musi być dłuższy niż 4 znaki.',
+      nickLengthMax: 'Nick musi być krótszy niż 64 znaki.',
     },
     userInfo: {
       controllsDescription:
@@ -54,6 +57,9 @@ const data = {
       confirmationMode: 'Confirmation mode',
       submitButton: 'Let&rsquo;s start!',
       fetchingError: 'Error during creating user session! Try again later!.',
+      nickEmpty: 'Enter nick.',
+      nickLengthMin: 'Nick lenght must be longer than 4 characters.',
+      nickLengthMax: 'Nick lenght must be lower than 64 characters.',
     },
     userInfo: {
       controllsDescription:

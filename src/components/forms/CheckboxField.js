@@ -5,7 +5,7 @@ function CheckboxField({ input, label, type, meta: { touched, error } }) {
   return (
     <div>
       {label && <label>{label}</label>} <input {...input} type={type} />
-      {touched && error && <span className='text-danger'>{error}</span>}
+      {touched && error && <div className='text-danger'>{error}</div>}
     </div>
   );
 }
