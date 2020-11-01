@@ -1,0 +1,19 @@
+.finish-view {
+  margin-top: 20vh;
+
+  .thanks-text {
+    font-size: 2rem;
+  }
+
+  .rate-again {
+    min-width: 300px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .finish-view {
+    .thanks-text {
+      font-size: 5rem;
+    }
+  }
+}

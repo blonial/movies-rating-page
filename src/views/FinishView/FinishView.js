@@ -8,6 +8,8 @@ import { getUserNick } from '../../selectors/user.selectors';
 
 import { useLanguage } from '../../hooks';
 
+import './style.scss';
+
 function FinishView() {
   const dispatch = useDispatch();
   const language = useLanguage('finishView');
@@ -21,15 +23,19 @@ function FinishView() {
   }, [dispatch]);
 
   return (
-    <div className='finish-view container d-flex flex-column justify-content-center'>
-      <h1 className='text-center'>
+    <div className='finish-view d-flex flex-column justify-content-center'>
+      <h1 className='thanks-text text-center mb-5'>
         {language.thanks} {nick}!
       </h1>
       <span
-        className='text-center'
+        className='text-center mt-5'
         dangerouslySetInnerHTML={{ __html: language.description }}
       />
-      <button onClick={reset}>{language.rateAgain}</button>
+      <div className='text-center mt-5'>
+        <button onClick={reset} className='rate-again btn btn-primary'>
+          {language.rateAgain}
+        </button>
+      </div>
     </div>
   );
 }

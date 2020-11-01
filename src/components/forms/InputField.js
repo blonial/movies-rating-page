@@ -13,7 +13,7 @@ function InputField({
       {label && <label>{label}</label>}
       <div>
         <input {...input} placeholder={placeholder} type={type} />
-        {touched && error && <span>{error}</span>}
+        {touched && error && <span className='text-danger'>{error}</span>}
       </div>
     </div>
   );

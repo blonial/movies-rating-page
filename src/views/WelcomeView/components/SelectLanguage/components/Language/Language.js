@@ -26,7 +26,7 @@ function Language({ lang }) {
 
   return (
     <div
-      className={`language col-6 d-flex flex-column justify-content-center ${activeClass}`}
+      className={`language d-flex flex-column justify-content-center mx-4 my-2 ${activeClass}`}
       onClick={changeLanguage}
     >
       <div className='d-flex justify-content-center'>

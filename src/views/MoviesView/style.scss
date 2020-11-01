@@ -1,11 +1,38 @@
-.navigate-back {
-  position: absolute;
-  left: 5px;
-  top: 50%;
+.movies-view {
+  .rating {
+    position: absolute;
+    bottom: 1rem;
+    color: #daa520;
+    background-color: #ffffff;
+    width: 480px;
+  }
+
+  .navigate-back {
+    position: absolute;
+    left: 5px;
+    top: 50%;
+  }
+}
+
+@media (min-width: 768px) {
+  .rating {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .rating {
+    width: 970px;
+  }
 }
 
 @media (min-width: 1200px) {
-  .navigate-back {
-    left: 2rem;
+  .movies-view {
+    .rating {
+    }
+
+    .navigate-back {
+      left: 2rem;
+    }
   }
 }

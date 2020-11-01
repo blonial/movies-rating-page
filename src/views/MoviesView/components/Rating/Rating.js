@@ -154,7 +154,7 @@ function Rating() {
         )}
         {error && <div className='text-danger'>{error}</div>}
       </div>
-      <button onClick={handleNeverSeenThisMovie}>
+      <button className='btn btn-primary' onClick={handleNeverSeenThisMovie}>
         {language.neverSeenThisMovie}
       </button>
     </div>

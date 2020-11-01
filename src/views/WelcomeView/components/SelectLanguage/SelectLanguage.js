@@ -8,11 +8,13 @@ function SelectLanguage() {
   const languages = useLanguage('welcomeView.selectLanguage');
 
   return (
-    <div className='select-language row'>
+    <div className='select-language'>
       <h1 className='col-12 text-center'>{languages.title}</h1>
-      {Object.keys(language).map((language) => (
-        <Language key={language} lang={language} />
-      ))}
+      <div className='d-flex justify-content-center'>
+        {Object.keys(language).map((language) => (
+          <Language key={language} lang={language} />
+        ))}
+      </div>
     </div>
   );
 }

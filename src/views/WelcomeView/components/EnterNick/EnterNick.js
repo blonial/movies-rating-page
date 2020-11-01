@@ -55,7 +55,7 @@ function EnterNick({ submitting, handleSubmit }) {
   return (
     <div className='enter-nick row'>
       <form
-        className='enter-nick-form col-12 d-flex flex-column'
+        className='enter-nick-form col-12 text-center mt-2'
         onSubmit={onSubmit}
       >
         <Field
@@ -73,6 +73,7 @@ function EnterNick({ submitting, handleSubmit }) {
           type='submit'
           dangerouslySetInnerHTML={{ __html: language.submitButton }}
           disabled={submitting || fetching}
+          className='btn btn-primary'
         />
         {error && <div className='text-danger'>{error}</div>}
       </form>
