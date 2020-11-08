@@ -42,7 +42,7 @@ function Navigation() {
       <span className='ml-5'>{ratingMovieId} / 200</span>
       {isMovieRated && ratingMovieId !== 200 ? (
         <span className='navigate-next text-warning' onClick={handleClickNext}>
-          <Icon icon={arrowCircleRight} size={28} /> {language.next}
+          {language.next} <Icon icon={arrowCircleRight} size={28} />
         </span>
       ) : (
         <div />

@@ -1,6 +1,6 @@
 export const moviesActions = {
   initializeMovies: 'movies/movies/initialize',
-  resetMovies: 'userRatings/reset',
+  resetMovies: 'movies/reset',
 };
 
 export const initializeMovies = () => (dispatch) =>
