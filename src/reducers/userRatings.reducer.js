@@ -12,7 +12,7 @@ function userRatingsReducer(state = initialState, action = {}) {
       state.userRatings[payload.movieId] = payload.rating;
       return { ...state };
     case userRatingsActions.resetUserRatings:
-      return initialState;
+      return { ...initialState };
     default:
       return state;
   }

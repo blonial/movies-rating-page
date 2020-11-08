@@ -5,9 +5,9 @@ import Flag from 'react-world-flags';
 
 import { getLanguage } from '../../../../selectors/language.selectors';
 import { getRatingMovieId } from '../../../../selectors/ratingMovie.selectors';
+import { getMovies } from '../../../../selectors/movies.selectors';
 import { getRatingMovieData } from '../../../../actions/ratingMovie.actions';
 import { LoadingWrapper } from '../../../../components/loading';
-import moviesData from '../../../../data/movies.data';
 import { useLanguage } from '../../../../hooks';
 
 function MovieDetails() {
@@ -19,12 +19,13 @@ function MovieDetails() {
 
   const selectedLanguage = useSelector(getLanguage);
   const ratingMovieId = useSelector(getRatingMovieId);
+  const movies = useSelector(getMovies);
 
   useEffect(() => {
     const fetchMovieData = async () => {
       setFetching(true);
       try {
-        const tmdbId = moviesData[ratingMovieId - 1].tmdbId;
+        const tmdbId = movies[ratingMovieId - 1].tmdbId;
         const data = await getRatingMovieData(tmdbId, selectedLanguage);
         setData(get(data, 'data'));
         setError(null);
@@ -46,6 +47,7 @@ function MovieDetails() {
     ratingMovieId,
     selectedLanguage,
     language,
+    movies,
   ]);
 
   return (

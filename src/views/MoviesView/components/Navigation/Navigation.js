@@ -8,8 +8,11 @@ import { arrowCircleRight } from 'react-icons-kit/fa/arrowCircleRight';
 import { getRatingMovieId } from '../../../../selectors/ratingMovie.selectors';
 import { getUserRatings } from '../../../../selectors/userRatings.selectors';
 import { setRatingMovieId } from '../../../../actions/ratingMovie.actions';
+import { useLanguage } from '../../../../hooks';
 
 function Navigation() {
+  const language = useLanguage('moviesView.navigation');
+
   const dispatch = useDispatch();
 
   const ratingMovieId = useSelector(getRatingMovieId);
@@ -31,7 +34,7 @@ function Navigation() {
     <div className='d-flex justify-content-between'>
       {ratingMovieId !== 1 ? (
         <span className='navigate-back text-warning' onClick={handleClickBack}>
-          <Icon icon={arrowCircleLeft} size={24} />
+          <Icon icon={arrowCircleLeft} size={28} /> {language.previous}
         </span>
       ) : (
         <div />
@@ -39,7 +42,7 @@ function Navigation() {
       <span className='ml-5'>{ratingMovieId} / 200</span>
       {isMovieRated && ratingMovieId !== 200 ? (
         <span className='navigate-next text-warning' onClick={handleClickNext}>
-          <Icon icon={arrowCircleRight} size={24} />
+          <Icon icon={arrowCircleRight} size={28} /> {language.next}
         </span>
       ) : (
         <div />

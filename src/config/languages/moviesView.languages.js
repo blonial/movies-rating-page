@@ -15,6 +15,10 @@ const data = {
       hello: 'Cześć',
       reset: 'Zacznij od nowa',
     },
+    navigation: {
+      previous: 'Poprzedni',
+      next: 'Następny',
+    },
     confirmationModal: {
       title: 'Potwierdź oceny',
       body: 'Czy chcesz potwierdzić wszystkie wystawione oceny filmów?',
@@ -46,6 +50,10 @@ const data = {
     header: {
       hello: 'Hi',
       reset: 'Start over',
+    },
+    navigation: {
+      previous: 'Previous',
+      next: 'Next',
     },
     confirmationModal: {
       title: 'Confirm rating',

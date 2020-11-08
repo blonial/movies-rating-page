@@ -5,6 +5,7 @@ import { resetViewType } from '../../actions/viewType.actions';
 import { resetRatingMovie } from '../../actions/ratingMovie.actions';
 import { resetUser } from '../../actions/user.actions';
 import { resetUserRatings } from '../../actions/userRatings.actions';
+import { resetMovies } from '../../actions/movies.actions';
 import { getUserNick } from '../../selectors/user.selectors';
 
 import { useLanguage } from '../../hooks';
@@ -22,6 +23,7 @@ function FinishView() {
     resetUser()(dispatch);
     resetRatingMovie()(dispatch);
     resetUserRatings()(dispatch);
+    resetMovies()(dispatch);
   }, [dispatch]);
 
   return (

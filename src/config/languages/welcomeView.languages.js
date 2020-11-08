@@ -33,6 +33,9 @@ const data = {
       progressSavingDescription:
         'Twój postęp w ocenianiu jest zapisywany w danych przeglądarki. <br />' +
         'Możesz przerwać ocenianie w dowolnym momencie i wrócić do niego póżniej.',
+      userNickAvailabilityDescription:
+        'Wybrany nick będzie użyty tylko i wyłącznie w celach identyfikacyjnych. <br /> ' +
+        'Wybranie ponownie tego samego nicku nie umożliwi zmiany ocen.',
       confirmationModeDescription:
         'Jeśli włączysz "Tryb potwierdzenia", obok wystawionej przez Ciebie oceny pojawi się przycisk "Zapisz ocenę". <br />' +
         'Za każdym razem będziesz musiał potwierdzić wybór swojej oceny poprzez kliknęcie tego przycisku lub naciśnięcie klawisza "Enter". <br />' +
@@ -72,6 +75,9 @@ const data = {
       progressSavingDescription:
         'Your rating progress is saved in your browser data. <br />' +
         'You can stop rating at any time and come back to it later.',
+      userNickAvailabilityDescription:
+        'The chosen nickname will be used only for identification purposes. <br />' +
+        'Selecting the same nickname again will not change the ratings.',
       confirmationModeDescription:
         'If you enable "Confirmation Mode", a "Save Rating" button will appear next to your rating. <br />' +
         'You will have to confirm your rating selection each time by clicking this button or pressing the "Enter" key. <br />' +

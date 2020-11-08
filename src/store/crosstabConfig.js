@@ -5,6 +5,7 @@ const crosstabConfig = {
     { key: 'ratingMovie', whitelist: ['id'] },
     { key: 'language', whitelist: ['language'] },
     { key: 'userRatings', whitelist: ['userRatings'] },
+    { key: 'movies', whitelist: ['movies'] },
   ],
 };
 

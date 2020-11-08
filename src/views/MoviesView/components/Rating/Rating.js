@@ -20,6 +20,7 @@ import {
 import key from '../../../../enums/key.enum';
 import { isNil } from 'lodash';
 import { setUserRating } from '../../../../actions/userRatings.actions';
+import { getMovies } from '../../../../selectors/movies.selectors';
 
 const FullSymbol = <Icon icon={star} size={36} />;
 const EmptySymbol = <Icon icon={starO} size={36} />;
@@ -37,6 +38,7 @@ function Rating() {
   const token = useSelector(getUserToken);
   const ratingMovieId = useSelector(getRatingMovieId);
   const userRatings = useSelector(getUserRatings);
+  const movies = useSelector(getMovies);
 
   const initialRating = isNil(rating)
     ? isNil(userRatings[ratingMovieId])
@@ -51,7 +53,7 @@ function Rating() {
       const rate = async () => {
         try {
           setFetching(true);
-          await rateMovie(ratingMovieId, value - 1, token);
+          await rateMovie(movies[ratingMovieId - 1].id, value - 1, token);
           setError(null);
           await setUserRating(ratingMovieId, value)(dispatch);
           if (nextRatingMovie > 200) {
@@ -72,7 +74,7 @@ function Rating() {
         rate();
       }
     },
-    [dispatch, ratingMovieId, token, language, fetching]
+    [dispatch, ratingMovieId, token, language, fetching, movies]
   );
 
   const handleConfirmConfirmationMode = useCallback(() => {

@@ -14,6 +14,7 @@ import {
   setUserToken,
 } from '../../../../actions/user.actions';
 import viewType from '../../../../enums/viewType.enum';
+import { initializeMovies } from '../../../../actions/movies.actions';
 
 function EnterNick({ submitting, handleSubmit }) {
   const [fetching, setFetching] = useState(false);
@@ -51,6 +52,7 @@ function EnterNick({ submitting, handleSubmit }) {
               setUserToken(token)(dispatch),
               setUserNick(nick)(dispatch),
               setUserConfirmationMode(confirmationMode)(dispatch),
+              initializeMovies()(dispatch),
             ]);
             setError(null);
             setViewType(viewType.moviesView)(dispatch);

@@ -7,6 +7,7 @@ import { resetUser } from '../../../../actions/user.actions';
 import { resetViewType } from '../../../../actions/viewType.actions';
 import { resetRatingMovie } from '../../../../actions/ratingMovie.actions';
 import { resetUserRatings } from '../../../../actions/userRatings.actions';
+import { resetMovies } from '../../../../actions/movies.actions';
 
 function AbortRatingModal() {
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ function AbortRatingModal() {
     resetUser()(dispatch);
     resetRatingMovie()(dispatch);
     resetUserRatings()(dispatch);
+    resetMovies()(dispatch);
   }, [dispatch]);
 
   return (
@@ -47,7 +49,7 @@ function AbortRatingModal() {
           <div className='modal-footer'>
             <button
               type='button'
-              className='btn btn-primary'
+              className='btn btn-danger'
               onClick={handleClick}
             >
               {language.save}
