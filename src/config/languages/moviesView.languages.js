@@ -11,6 +11,10 @@ const data = {
       ratingError:
         'Wystąpił problem podczas oceniania filmu! Spróbuj podnownie później.',
     },
+    header: {
+      hello: 'Cześć',
+      reset: 'Zacznij od nowa',
+    },
     confirmationModal: {
       title: 'Potwierdź oceny',
       body: 'Czy chcesz potwierdzić wszystkie wystawione oceny filmów?',
@@ -19,8 +23,13 @@ const data = {
       confirmingError:
         'Wystąpił problem podczas zapisywania ocen! Spróbuj ponownie później.',
     },
-    navigation: {
-      back: 'Poprzedni film',
+    abortRatingModal: {
+      title: 'Porzuć ocenianie',
+      body: 'Czy chcesz porzucić aktualny postęp w ocenianiu filmów?',
+      save: 'Tak',
+      close: 'Nie',
+      abortError:
+        'Wystąpił problem podczas porzucania ocen! Spróbuj ponownie później.',
     },
   },
   en: {
@@ -34,6 +43,10 @@ const data = {
       neverSeenThisMovie: 'Never seen this movie',
       ratingError: 'Error during rating movie! Try again later.',
     },
+    header: {
+      hello: 'Hi',
+      reset: 'Start over',
+    },
     confirmationModal: {
       title: 'Confirm rating',
       body: 'Do you really want to confirm all movies ratings?',
@@ -41,8 +54,12 @@ const data = {
       close: 'Cancel',
       confirmingError: 'Error during saving ratings! Try again later.',
     },
-    navigation: {
-      back: 'Previous movie',
+    abortRatingModal: {
+      title: 'Abort rating',
+      body: 'Do you really want to abort ratings?',
+      save: 'Yes',
+      close: 'No',
+      abortError: 'Error during abort ratings! Try again later.',
     },
   },
 };

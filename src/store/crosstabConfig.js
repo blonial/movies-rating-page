@@ -4,6 +4,7 @@ const crosstabConfig = {
     { key: 'viewType', whitelist: ['viewType'] },
     { key: 'ratingMovie', whitelist: ['id'] },
     { key: 'language', whitelist: ['language'] },
+    { key: 'userRatings', whitelist: ['userRatings'] },
   ],
 };
 

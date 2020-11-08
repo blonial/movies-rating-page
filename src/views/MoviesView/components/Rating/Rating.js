@@ -12,11 +12,14 @@ import {
   getUserToken,
 } from '../../../../selectors/user.selectors';
 import { getRatingMovieId } from '../../../../selectors/ratingMovie.selectors';
+import { getUserRatings } from '../../../../selectors/userRatings.selectors';
 import {
   setRatingMovieId,
   rateMovie,
 } from '../../../../actions/ratingMovie.actions';
 import key from '../../../../enums/key.enum';
+import { isNil } from 'lodash';
+import { setUserRating } from '../../../../actions/userRatings.actions';
 
 const FullSymbol = <Icon icon={star} size={36} />;
 const EmptySymbol = <Icon icon={starO} size={36} />;
@@ -24,7 +27,7 @@ const EmptySymbol = <Icon icon={starO} size={36} />;
 function Rating() {
   const [fetching, setFetching] = useState(false);
   const [error, setError] = useState(null);
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(null);
 
   const dispatch = useDispatch();
 
@@ -33,6 +36,13 @@ function Rating() {
   const confirmationMode = useSelector(getUserConfirmationMode);
   const token = useSelector(getUserToken);
   const ratingMovieId = useSelector(getRatingMovieId);
+  const userRatings = useSelector(getUserRatings);
+
+  const initialRating = isNil(rating)
+    ? isNil(userRatings[ratingMovieId])
+      ? 0
+      : userRatings[ratingMovieId]
+    : rating;
 
   const handleConfirm = useCallback(
     (value) => {
@@ -43,6 +53,7 @@ function Rating() {
           setFetching(true);
           await rateMovie(ratingMovieId, value - 1, token);
           setError(null);
+          await setUserRating(ratingMovieId, value)(dispatch);
           if (nextRatingMovie > 200) {
             $('#confirmationModal').modal('show');
           } else {
@@ -66,10 +77,10 @@ function Rating() {
 
   const handleConfirmConfirmationMode = useCallback(() => {
     setRating((rating) => {
-      if (rating !== 0) {
+      if (!isNil(rating)) {
         handleConfirm(rating);
       }
-      return 0;
+      return null;
     });
   }, [setRating, handleConfirm]);
 
@@ -139,7 +150,7 @@ function Rating() {
         <ReactRating
           fullSymbol={FullSymbol}
           emptySymbol={EmptySymbol}
-          initialRating={rating}
+          initialRating={initialRating}
           onChange={handleChange}
           start={0}
           stop={6}
@@ -147,7 +158,7 @@ function Rating() {
         {confirmationMode && (
           <button
             onClick={handleConfirmConfirmationMode}
-            disabled={rating === 0}
+            disabled={isNil(rating)}
             className='btn btn-primary ml-3'
           >
             {language.confirmButton}

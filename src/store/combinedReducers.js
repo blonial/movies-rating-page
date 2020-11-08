@@ -5,6 +5,7 @@ import userReducer from '../reducers/user.reducer';
 import viewTypeReducer from '../reducers/viewType.reducer';
 import ratingMovieReducer from '../reducers/ratingMovie.reducer';
 import languageReducer from '../reducers/language.reducer';
+import userRatingsReducer from '../reducers/userRatings.reducer';
 
 const combinedReducers = combineReducers({
   form: formReducer,
@@ -12,6 +13,7 @@ const combinedReducers = combineReducers({
   viewType: viewTypeReducer,
   ratingMovie: ratingMovieReducer,
   language: languageReducer,
+  userRatings: userRatingsReducer,
 });
 
 export default combinedReducers;

@@ -6,7 +6,7 @@ import './style.scss';
 
 function WelcomeView() {
   return (
-    <section className='welcome-view container'>
+    <section className='welcome-view container card card-body bg-light'>
       <div className='row d-flex justify-content-center'>
         <SelectLanguage />
       </div>

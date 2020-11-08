@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { resetViewType } from '../../actions/viewType.actions';
 import { resetRatingMovie } from '../../actions/ratingMovie.actions';
 import { resetUser } from '../../actions/user.actions';
+import { resetUserRatings } from '../../actions/userRatings.actions';
 import { getUserNick } from '../../selectors/user.selectors';
 
 import { useLanguage } from '../../hooks';
@@ -20,10 +21,11 @@ function FinishView() {
     resetViewType()(dispatch);
     resetUser()(dispatch);
     resetRatingMovie()(dispatch);
+    resetUserRatings()(dispatch);
   }, [dispatch]);
 
   return (
-    <div className='finish-view d-flex flex-column justify-content-center'>
+    <div className='finish-view d-flex flex-column justify-content-center card card-body bg-light'>
       <h1 className='thanks-text text-center mb-5'>
         {language.thanks} {nick}!
       </h1>
