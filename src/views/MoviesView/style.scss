@@ -9,6 +9,11 @@
 
   .rating {
     color: #daa520;
+
+    .never-seen {
+      font-weight: bold;
+      text-decoration: underline;
+    }
   }
 
   .navigate-next,

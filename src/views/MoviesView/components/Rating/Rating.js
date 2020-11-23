@@ -169,7 +169,9 @@ function Rating() {
       </div>
       {error && <div className='text-danger text-center'>{error}</div>}
       <button
-        className='btn btn-warning mt-2'
+        className={`btn btn-warning mt-2 ${
+          userRatings[ratingMovieId] === 0 ? 'never-seen' : ''
+        }`}
         onClick={handleNeverSeenThisMovie}
       >
         {language.neverSeenThisMovie}
